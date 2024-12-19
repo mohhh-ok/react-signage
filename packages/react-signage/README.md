@@ -52,27 +52,28 @@ export default function App() {
             }
         </button>
 
-        <p>Component. If not fullscreen, slideshow is shown below.</p>
+        <p>Component. If not fullscreen, slideshow is shown below.
+         To use IndexedDB cache, set 'useDbCache' parameter.
+        </p>
         <Signage
             play={play}
             fullScreen={fullScreen}
             items={items}
+            useDbCache={true}
         />
 
-        <p>Preloader (Optional). Preload media files into IndexedDB.</p>
+        <p>Preloader (Optional, but recommended for Safari). Preload media files into IndexedDB.</p>
         <Cacher
             items={cacheItems}
             renderProgress={({ progress, queue }) => <div>
-                {queue.length > 0
-                    ? 'loading...'
-                    : 'done'
-                }
-                {progress?.progress
-                    && <>
-                        {progress.progress * 100}%
+                {progress
+                    ? <>
+                        loading...
+                        {Math.round(progress.progress * 100)}%
                         <br />
                         {progress.src}
                     </>
+                    : 'done'
                 }
             </div>}
         />

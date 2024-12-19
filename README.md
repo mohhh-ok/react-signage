@@ -2,14 +2,16 @@
 
 This is a react library for signage.
 
-- Auto slide image and video with fade in.
+- Auto slide image and video with cross fade.
 - Can toggle fullscreen.
 - Preloader to cache to browser (optional)
 - If the browser does not support the Fullscreen API, use a pseudo fullscreen display.
 
 See the [demo site](https://mohhh-ok.github.io/react-signage/) for example.
 
+## Support browser
 
+This library supports Chrome.
 
 ## Install
 
@@ -50,21 +52,31 @@ export default function App() {
             }
         </button>
 
-        <p>Component. If not fullscreen, slideshow is shown below.</p>
+        <p>Component. If not fullscreen, slideshow is shown below.
+         To use IndexedDB cache, set 'useDbCache' parameter.
+        </p>
         <Signage
             play={play}
             fullScreen={fullScreen}
             items={items}
+            useDbCache={true}
         />
 
-        <p>Preloader (Optional). Preload media files into browser cache. Note: May not work well with large video files.</p>
-        <PreloaderProvider items={items}>
-            <PreloaderMessage />
-            <div style={{ width: "150px", height: "100px", maxWidth: "150px", maxHeight: "100px" }}>
-                <PreloaderMedia />
-            </div>
-        </PreloaderProvider>
-
+        <p>Preloader (Optional, but recommended for Safari). Preload media files into IndexedDB.</p>
+        <Cacher
+            items={cacheItems}
+            renderProgress={({ progress, queue }) => <div>
+                {progress
+                    ? <>
+                        loading...
+                        {Math.round(progress.progress * 100)}%
+                        <br />
+                        {progress.src}
+                    </>
+                    : 'done'
+                }
+            </div>}
+        />
     </>
 }
 ```

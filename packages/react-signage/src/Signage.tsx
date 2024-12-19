@@ -74,7 +74,7 @@ export const Signage = forwardRef<SignageRefType, SignageProps>(
             };
             // 古い端末用に、一旦ダミー動画を再生させる
             if (params.isFirst) {
-                await videoRef.current.setSrc(interactionDummyVideo);
+                await videoRef.current.setSrc(interactionDummyVideo, { noDbCache: true });
                 await videoRef.current.play();
             }
             await process();

@@ -33,9 +33,10 @@ export const Img = forwardRef<ImgRef, Props>(
                     config: { duration: FADE_DURATION }
                 });
             },
-            setSrc: async (src: string) => {
+            setSrc: async (src: string, ops?: { noDbCache?: boolean }) => {
+                const { noDbCache } = ops || {};
                 if (!elementRef.current) return;
-                const newSrc = useDbCache ? await getOrFetchAndCache(src) : src;
+                const newSrc = (!noDbCache && useDbCache) ? await getOrFetchAndCache(src) : src;
                 elementRef.current.src = newSrc;
             },
             elementRef: elementRef
