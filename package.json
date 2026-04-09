@@ -6,7 +6,10 @@
     "packageManager": "pnpm@9.13.1",
     "pnpm": {
         "overrides": {
-            "undici": ">=7.0.0"
+            "undici": ">=7.0.0",
+            "flatted": ">=3.4.2",
+            "@babel/runtime": ">=7.26.10",
+            "yaml": ">=1.10.3"
         }
     }
 }
