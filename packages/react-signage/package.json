@@ -33,7 +33,7 @@
     "license": "MIT",
     "dependencies": {
         "@react-spring/web": "^9.7.5",
-        "axios": "^1.7.9",
+        "axios": "^1.13.5",
         "dexie": "^4.0.10",
         "react-hot-toast": "^2.4.1"
     },
