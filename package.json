@@ -10,7 +10,8 @@
             "flatted": ">=3.4.2",
             "@babel/runtime": ">=7.26.10",
             "yaml": ">=1.10.3",
-            "basic-ftp": ">=5.3.0"
+            "basic-ftp": ">=5.3.0",
+            "follow-redirects": ">=1.16.0"
         }
     }
 }
