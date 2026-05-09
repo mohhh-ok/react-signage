@@ -3,7 +3,7 @@ import { useDebug } from "../../../debug/useDebug";
 import { useEffect, useRef } from "react";
 
 type Params = {
-    ref: React.RefObject<HTMLVideoElement>;
+    ref: React.RefObject<HTMLVideoElement | null>;
 }
 
 export function useVideoError(params: Params) {

@@ -165,7 +165,7 @@ export const Signage = forwardRef<SignageRefType, SignageProps>(
 );
 
 
-function isVisible(ref: React.RefObject<HTMLElement> | undefined) {
+function isVisible(ref: React.RefObject<HTMLElement | null> | undefined) {
     if (!ref?.current) return false;
     return ref.current.style.display != 'none';
 }

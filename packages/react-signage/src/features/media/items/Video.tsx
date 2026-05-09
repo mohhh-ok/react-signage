@@ -13,7 +13,7 @@ type VideoProps = VideoHTMLAttributes<HTMLVideoElement> & {
 }
 
 export interface VideoRef extends MediaItemRefBase {
-    elementRef: React.RefObject<HTMLVideoElement>;
+    elementRef: React.RefObject<HTMLVideoElement | null>;
     play: () => Promise<void>;
     pause: () => void;
 }

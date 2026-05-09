@@ -11,7 +11,7 @@ type Props = {
 }
 
 export interface ImgRef extends MediaItemRefBase {
-    elementRef: React.RefObject<HTMLImageElement>;
+    elementRef: React.RefObject<HTMLImageElement | null>;
 }
 
 export const Img = forwardRef<ImgRef, Props>(
