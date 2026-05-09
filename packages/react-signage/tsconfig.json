@@ -6,8 +6,7 @@
         "rootDir": "./src",
         "jsx": "react-jsx",
         "types": [
-            "react",
-            "jest"
+            "react"
         ],
         "lib": [
             "dom",
@@ -20,5 +19,10 @@
     "include": [
         "src/**/*.ts",
         "src/**/*.tsx"
+    ],
+    "exclude": [
+        "src/**/*.test.ts",
+        "src/**/*.test.tsx",
+        "src/test-setup.ts"
     ]
 }
