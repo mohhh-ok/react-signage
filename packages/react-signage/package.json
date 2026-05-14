@@ -33,7 +33,7 @@
     "license": "MIT",
     "dependencies": {
         "@react-spring/web": "^10.0.3",
-        "axios": "^1.16.0",
+        "axios": "^1.16.1",
         "dexie": "^4.4.2",
         "react-hot-toast": "^2.6.0"
     },
@@ -60,6 +60,6 @@
         "fake-indexeddb": "^6.2.5",
         "jsdom": "^29.1.1",
         "release-it": "^20.0.1",
-        "vitest": "^4.1.5"
+        "vitest": "^4.1.6"
     }
 }
