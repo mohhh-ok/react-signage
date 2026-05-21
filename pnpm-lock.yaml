@@ -117,8 +117,8 @@ importers:
         specifier: ^19.2.14
         version: 19.2.14
       cpx2:
-        specifier: ^8.0.2
-        version: 8.0.2
+        specifier: ^9.0.0
+        version: 9.0.0
       fake-indexeddb:
         specifier: ^6.2.5
         version: 6.2.5
@@ -1275,9 +1275,9 @@ packages:
     resolution: {integrity: sha512-AdmX6xUzdNASswsFtmwSt7Vj8po9IuqXm0UXz7QKPuEUmPB4XyjGfaAr2PSuELMwkRMVH1EpIkX5bTZGRB3eCA==}
     engines: {node: '>=10'}
 
-  cpx2@8.0.2:
-    resolution: {integrity: sha512-exLFEIh8XgWthEtrEq8hs+S6jxM5ZHpjQnRH6D7VU+2uAYS3amLSVOUSuirfx3HeN7WBCq+xFygHpt7l+gQtUA==}
-    engines: {node: ^20.0.0 || >=22.0.0, npm: '>=10'}
+  cpx2@9.0.0:
+    resolution: {integrity: sha512-KRZGQCmHrM10xfLjrCBTQHpEIJgKtZyOOO5fygu9KE00IjQOL76FHjeON62R5PWS/W2J5ofgRJKF8rpUlEuLPQ==}
+    engines: {node: ^22.0.0 || >=24.0.0, npm: '>=10'}
     hasBin: true
 
   cross-spawn@7.0.6:
@@ -1922,6 +1922,10 @@ packages:
 
   lru-cache@11.3.6:
     resolution: {integrity: sha512-Gf/KoL3C/MlI7Bt0PGI9I+TeTC/I6r/csU58N4BSNc4lppLBeKsOdFYkK+dX0ABDUMJNfCHTyPpzwwO21Awd3A==}
+    engines: {node: 20 || >=22}
+
+  lru-cache@11.5.0:
+    resolution: {integrity: sha512-5YgH9UJd7wVb9hIouI2adWpgqrrICkt070Dnj8EUY1+B4B2P9eRLPAkAAo6NICA7CEhOIeBHl46u9zSNpNu7zA==}
     engines: {node: 20 || >=22}
 
   lru-cache@5.1.1:
@@ -3726,7 +3730,7 @@ snapshots:
       path-type: 4.0.0
       yaml: 2.8.4
 
-  cpx2@8.0.2:
+  cpx2@9.0.0:
     dependencies:
       debounce: 3.0.0
       glob: 13.0.6
@@ -3734,7 +3738,6 @@ snapshots:
       ignore: 7.0.5
       minimatch: 10.2.5
       p-map: 7.0.4
-      resolve: 1.22.12
       shell-quote: 1.8.3
       subarg: 1.0.0
 
@@ -4350,6 +4353,8 @@ snapshots:
 
   lru-cache@11.3.6: {}
 
+  lru-cache@11.5.0: {}
+
   lru-cache@5.1.1:
     dependencies:
       yallist: 3.1.1
@@ -4521,7 +4526,7 @@ snapshots:
 
   path-scurry@2.0.2:
     dependencies:
-      lru-cache: 11.3.6
+      lru-cache: 11.5.0
       minipass: 7.1.3
 
   path-type@4.0.0: {}
