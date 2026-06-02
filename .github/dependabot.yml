@@ -9,24 +9,6 @@ updates:
       minor-and-patch:
         update-types: ["minor", "patch"]
 
-  - package-ecosystem: "npm"
-    directory: "/packages/react-signage"
-    schedule:
-      interval: "weekly"
-    open-pull-requests-limit: 10
-    groups:
-      minor-and-patch:
-        update-types: ["minor", "patch"]
-
-  - package-ecosystem: "npm"
-    directory: "/docs-src"
-    schedule:
-      interval: "weekly"
-    open-pull-requests-limit: 10
-    groups:
-      minor-and-patch:
-        update-types: ["minor", "patch"]
-
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
