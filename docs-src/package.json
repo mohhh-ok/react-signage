@@ -15,7 +15,7 @@
         "@emotion/styled": "^11.14.1",
         "@masa-dev/mui-enhance": "^1.1.0",
         "@masa-dev/react-signage": "workspace:*",
-        "@mui/material": "^9.1.0",
+        "@mui/material": "^9.1.1",
         "react": "^19.2.7",
         "react-dom": "^19.2.7",
         "react-router": "^7.17.0"

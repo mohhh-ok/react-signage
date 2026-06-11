@@ -32,7 +32,7 @@
     "author": "masa-dev",
     "license": "MIT",
     "dependencies": {
-        "@react-spring/web": "^10.1.0",
+        "@react-spring/web": "^10.1.1",
         "axios": "^1.17.0",
         "dexie": "^4.4.3",
         "react-hot-toast": "^2.6.0"
