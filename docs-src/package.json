@@ -15,22 +15,22 @@
         "@emotion/styled": "^11.14.1",
         "@masa-dev/mui-enhance": "^1.1.0",
         "@masa-dev/react-signage": "workspace:*",
-        "@mui/material": "^9.1.1",
+        "@mui/material": "^9.1.2",
         "react": "^19.2.7",
         "react-dom": "^19.2.7",
-        "react-router": "^8.0.0"
+        "react-router": "^8.1.0"
     },
     "devDependencies": {
         "@eslint/js": "^10.0.1",
         "@types/react": "^19.2.17",
         "@types/react-dom": "^19.2.3",
         "@vitejs/plugin-react-swc": "^4.3.1",
-        "eslint": "^10.5.0",
+        "eslint": "^10.6.0",
         "eslint-plugin-react-hooks": "^7.1.1",
         "eslint-plugin-react-refresh": "^0.5.3",
-        "globals": "^17.6.0",
+        "globals": "^17.7.0",
         "typescript": "~6.0.3",
-        "typescript-eslint": "^8.61.1",
-        "vite": "^8.0.16"
+        "typescript-eslint": "^8.62.1",
+        "vite": "^8.1.2"
     }
 }

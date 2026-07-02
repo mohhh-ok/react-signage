@@ -32,9 +32,9 @@
     "author": "masa-dev",
     "license": "MIT",
     "dependencies": {
-        "@react-spring/web": "^10.1.1",
-        "axios": "^1.18.0",
-        "dexie": "^4.4.3",
+        "@react-spring/web": "^10.1.2",
+        "axios": "^1.18.1",
+        "dexie": "^4.4.4",
         "react-hot-toast": "^2.6.0"
     },
     "peerDependencies": {
@@ -59,7 +59,7 @@
         "cpx2": "^9.0.0",
         "fake-indexeddb": "^6.2.5",
         "jsdom": "^29.1.1",
-        "release-it": "^20.2.0",
+        "release-it": "^20.2.1",
         "vitest": "^4.1.9"
     }
 }
