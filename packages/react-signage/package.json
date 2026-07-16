@@ -60,6 +60,6 @@
         "fake-indexeddb": "^6.2.5",
         "jsdom": "^29.1.1",
         "release-it": "^20.2.1",
-        "vitest": "^4.1.9"
+        "vitest": "^4.1.10"
     }
 }
