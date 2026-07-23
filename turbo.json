@@ -18,6 +18,12 @@
             "persistent": true,
             "cache": false
         },
+        "lint": {
+            "dependsOn": [
+                "^build"
+            ]
+        },
+        "test": {},
         "preview": {
             "persistent": true,
             "cache": false
