@@ -79,3 +79,93 @@ describe('useDataStore', () => {
         expect(row?.size).toBe(0);
     });
 });
+
+describe('upsertMediaData quota handling', () => {
+    beforeEach(async () => {
+        await clearDb();
+    });
+
+    afterEach(() => {
+        vi.restoreAllMocks();
+        vi.useRealTimers();
+    });
+
+    it('evicts the least recently accessed entry and retries when put fails once', async () => {
+        const { result } = renderHook(() => useDataStore());
+
+        vi.setSystemTime(new Date('2020-01-01T00:00:00Z'));
+        await act(async () => {
+            await result.current.upsertMediaData({ url: 'entryOld', blob: new Blob(['old-data']) });
+        });
+
+        vi.setSystemTime(new Date('2021-01-01T00:00:00Z'));
+        await act(async () => {
+            await result.current.upsertMediaData({ url: 'entryNew', blob: new Blob(['new-data']) });
+        });
+
+        // the incoming url gets its own mediaStatus row (accessedAt = now) before the put
+        // loop runs, so it must be the most recently accessed of the three to keep the
+        // LRU pick deterministic.
+        vi.setSystemTime(new Date('2022-01-01T00:00:00Z'));
+        vi.spyOn(db.mediaData, 'put').mockRejectedValueOnce(new Error('QuotaExceededError'));
+
+        let ok = false;
+        await act(async () => {
+            ok = await result.current.upsertMediaData({ url: 'incoming', blob: new Blob(['incoming-data']) });
+        });
+
+        expect(ok).toBe(true);
+        expect(await db.mediaData.get('entryOld')).toBeUndefined();
+        expect(await db.mediaStatus.get('entryOld')).toBeUndefined();
+        expect(await db.mediaData.get('entryNew')).toBeDefined();
+        expect(await db.mediaStatus.get('entryNew')).toBeDefined();
+        expect((await db.mediaData.get('incoming'))?.blob).toBeDefined();
+    });
+
+    it('returns false without looping forever when put keeps failing and nothing is left to evict', async () => {
+        const { result } = renderHook(() => useDataStore());
+        vi.spyOn(db.mediaData, 'put').mockRejectedValue(new Error('QuotaExceededError'));
+
+        // the incoming url's own mediaStatus row (written before the put loop) is the only
+        // row in the store, so it gets evicted first; the next eviction attempt then finds
+        // nothing left and the loop must terminate with false rather than spin forever.
+        let ok = true;
+        await act(async () => {
+            ok = await result.current.upsertMediaData({ url: 'a', blob: new Blob(['data']) });
+        });
+
+        expect(ok).toBe(false);
+        expect(await db.mediaStatus.get('a')).toBeUndefined();
+        expect(await db.mediaData.get('a')).toBeUndefined();
+    }, 5000);
+
+    it('evicts entries until exhausted then returns false when put always fails', async () => {
+        const { result } = renderHook(() => useDataStore());
+
+        vi.setSystemTime(new Date('2020-01-01T00:00:00Z'));
+        await act(async () => {
+            await result.current.upsertMediaData({ url: 'entryOld', blob: new Blob(['old-data']) });
+        });
+
+        vi.setSystemTime(new Date('2021-01-01T00:00:00Z'));
+        await act(async () => {
+            await result.current.upsertMediaData({ url: 'entryNew', blob: new Blob(['new-data']) });
+        });
+
+        vi.setSystemTime(new Date('2022-01-01T00:00:00Z'));
+        vi.spyOn(db.mediaData, 'put').mockRejectedValue(new Error('QuotaExceededError'));
+
+        let ok = true;
+        await act(async () => {
+            ok = await result.current.upsertMediaData({ url: 'incoming', blob: new Blob(['incoming-data']) });
+        });
+
+        expect(ok).toBe(false);
+        expect(await db.mediaData.get('entryOld')).toBeUndefined();
+        expect(await db.mediaStatus.get('entryOld')).toBeUndefined();
+        expect(await db.mediaData.get('entryNew')).toBeUndefined();
+        expect(await db.mediaStatus.get('entryNew')).toBeUndefined();
+        expect(await db.mediaData.get('incoming')).toBeUndefined();
+        expect(await db.mediaStatus.get('incoming')).toBeUndefined();
+    }, 5000);
+});
