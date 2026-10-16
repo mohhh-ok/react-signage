@@ -15,7 +15,7 @@
         "@emotion/styled": "^11.14.1",
         "@masa-dev/mui-enhance": "^1.1.0",
         "@masa-dev/react-signage": "workspace:*",
-        "@mui/material": "^9.4.0",
+        "@mui/material": "^9.5.0",
         "react": "^19.3.0",
         "react-dom": "^19.3.0",
         "react-router": "^8.4.0"
@@ -30,7 +30,7 @@
         "eslint-plugin-react-refresh": "^0.5.7",
         "globals": "^17.13.0",
         "typescript": "~6.0.3",
-        "typescript-eslint": "^8.71.1",
-        "vite": "^8.3.3"
+        "typescript-eslint": "^8.71.2",
+        "vite": "^8.3.4"
     }
 }
