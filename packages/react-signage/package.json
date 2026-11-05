@@ -57,10 +57,10 @@
         "@tsconfig/node20": "^20.1.10",
         "@types/react": "^19.3.0",
         "cpx2": "^9.0.3",
-        "fake-indexeddb": "^6.2.6",
+        "fake-indexeddb": "^6.2.7",
         "jsdom": "^30.1.3",
-        "release-it": "^21.1.1",
+        "release-it": "^21.1.2",
         "typescript": "~6.0.3",
-        "vitest": "^5.0.5"
+        "vitest": "^5.1.0"
     }
 }
